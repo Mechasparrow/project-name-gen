@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import './Generator.css';
 
 //import data
-import markets from '../../../data/json/startup-markets.json';
-import features from '../../../data/json/startup-features.json';
+import adjectives from '../../../data/json/adjectives.json';
+import nouns from '../../../data/json/nouns.json';
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -26,19 +26,29 @@ class Generator extends Component {
 
   }
 
-  renderMessage(market, feature) {
+  /**renderMessage(market, feature) {
       return (
         <p>The startup offers <u>{feature}</u> for <u>{market}</u></p>
       );
+  }**/
+
+  renderMessage(adjective, noun) {
+    return (
+        <p>The project should be named <br></br><u>{adjective}-{noun}</u></p>
+    );
   }
 
   buttonClick() {
 
-      let feature = features[getRandomInt(0, features.length)].Feature
-      let market = markets[getRandomInt(0, markets.length)].Market
+      //let feature = features[getRandomInt(0, features.length)].Feature
+      //let market = markets[getRandomInt(0, markets.length)].Market
       
+      let adjective = adjectives.adjs[getRandomInt(0, adjectives.adjs.length)]
+      let noun = nouns.nouns[getRandomInt(0, nouns.nouns.length)]
+
+
       this.setState({
-          message: this.renderMessage(market, feature)
+          message: this.renderMessage(adjective, noun)
       })
   }
 

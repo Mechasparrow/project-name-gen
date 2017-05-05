@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className = "app container-fluid">
-        <h1 className = "app-header"><b>Startup matrix generator</b></h1>
+        <h1 className = "app-header"><b>Project name generator</b></h1>
 
         <Generator />
         
