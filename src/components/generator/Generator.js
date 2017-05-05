@@ -6,6 +6,7 @@ import './Generator.css';
 import adjectives from '../../../data/json/adjectives.json';
 import nouns from '../../../data/json/nouns.json';
 
+//Random helper function
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -18,39 +19,39 @@ class Generator extends Component {
   constructor(props) {
     super(props)
 
+    //Set an empty message
     this.state = {message: <p></p>}
 
-    console.log(this.state)
-
+    //Set up event management
     this.buttonClick = this.buttonClick.bind(this)
 
   }
 
-  /**renderMessage(market, feature) {
-      return (
-        <p>The startup offers <u>{feature}</u> for <u>{market}</u></p>
-      );
-  }**/
-
+  //Render the generated message
   renderMessage(adjective, noun) {
     return (
         <p>The project should be named <br></br><u>{adjective}-{noun}</u></p>
     );
   }
 
+  //Check if user clicked main button
   buttonClick() {
 
-      //let feature = features[getRandomInt(0, features.length)].Feature
-      //let market = markets[getRandomInt(0, markets.length)].Market
-      
+      //Retrieve random adjective
       let adjective = adjectives.adjs[getRandomInt(0, adjectives.adjs.length)]
+      
+      //Retrieve random noun
       let noun = nouns.nouns[getRandomInt(0, nouns.nouns.length)]
 
 
+      //Generate random message and push it to application state
       this.setState({
           message: this.renderMessage(adjective, noun)
       })
+
   }
+
+  //Render all the code
 
   render() {
       
